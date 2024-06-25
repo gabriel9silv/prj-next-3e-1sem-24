@@ -3,7 +3,7 @@ import React from 'react';
 
 const Coracao = () => {
   return (
-    <span role="img" aria-label="coracao">❤️</span>
+    <span role="img" aria-label="coracao">♡</span>
   );
 };
 

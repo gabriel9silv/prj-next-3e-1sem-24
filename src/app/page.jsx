@@ -1,34 +1,88 @@
+'use client'
 
 import React from 'react';
-import NameInput from './components/NameInput';
-import DateInput from './components/DateInput';
-import Horainicio from './components/Horainicio';
-import Horafinal from './components/Horafinal';
 import Coracao from './components/Coracao';
-import styles from './styles/Tela2.module.css';
+import styles from './page.module.css';
+import styled from 'styled-components';
+import Image from 'next/image';
+import Agenda from '../../public/next.svg';
+import CalendarComponent from './components/Calendario/calendario'
 
 const Tela2 = () => {
   const text = 'A biblioteca da escola é um espaço dedicado à promoção da educação, pesquisa e desenvolvimento intelectual dos alunos. Equipada com uma ampla variedade de livros, periódicos e recursos digitais, a biblioteca oferece um ambiente propício para o estudo individual e em grupo.';
+  const StyledInput = styled.input`
+    border: 2px solid #1A1B21;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 16px;
+    width: 85%;
+    height: 25%;
+    margin: 2%;
+  `;
+  const StyledInput2 = styled.input`
+    border: 2px solid #1A1B21;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 16px;
+    width: 49rem;
+    height: 100%;
+    margin: 2%;
+    margin-left:-0.5rem;
+  `;
+
+  const NameInputContainer = styled.div`
+    display: flex;
+    align-items: center;
+    margin: 4%;     
+  `;
+
+  const NameButton = styled.button`
+    margin-left: -5rem;
+    padding: 8px ;
+    font-size: 26px;
+    border: 2px solid #fff;
+    border-radius: 40px;
+    background-color: #fff;
+    cursor: pointer;
+
+
+  `;
 
   return (
     <div className={styles.scrollView}>
       <div className={styles.container}>
+
         <div className={styles.contentWrapper}>
           <div className={styles.content}>
-              <h1 className={styles.title}>Biblioteca <Coracao /></h1>
+            <div className={styles.column}>
               <div className={styles.texto2}>
+                <h1 className={styles.title}>Biblioteca <Coracao /></h1>
+                <h1 className={styles.title2}>★ ★ ★ ☆ ☆</h1>
                 <h2 className={styles.desc}>Descrição</h2>
                 <p className={styles.lors}>{text}</p>
-              <NameInput /><div></div>
-              <DateInput /><div></div>
-              <Horainicio /> <div></div>
               </div>
-              <Horafinal /><div></div>
-              <button className={styles.button}>Finalizar Agendamento</button>
+              <div className={styles.row}>
+                <NameInputContainer>
+                  <StyledInput2 type="name" placeholder='Nomes' />
+                  <NameButton>+</NameButton>
+                </NameInputContainer>
+                <StyledInput type="date" />
+                <StyledInput type="time" />
+                <StyledInput type="time" />
+                <button className={styles.button}>Finalizar Agendamento</button>
               </div>
+              <div className={styles.column}>
+                  <div className={styles.centro}>
+                  <div className={styles.disponivel}><h1>Disponibilidade</h1></div>
+                  <CalendarComponent />
+                  </div>
+                 
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
       </div>
+    </div>
   );
 };
 
