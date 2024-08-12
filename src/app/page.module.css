@@ -166,4 +166,43 @@
 
 }
 
+.wrapper {
+  margin: 20px;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-right: 8px;
+}
+
+.plusButton {
+  padding: 8px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.nameList {
+  margin-top: 20px;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.nameItem {
+  padding: 5px 0;
+  font-size: 16px;
+}
+
+
 

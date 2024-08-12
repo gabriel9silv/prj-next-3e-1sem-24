@@ -1,12 +1,13 @@
 'use client'
 
-import React from 'react';
-import Coracao from './components/Coracao';
-import styles from './page.module.css';
+import React, {useState} from 'react';
+import Coracao from './components/Coracao/Coracao';
+import pageStyles from './page.module.css'; // Renomeado para `pageStyles`
 import styled from 'styled-components';
 import Image from 'next/image';
 import Agenda from '../../public/next.svg';
 import CalendarComponent from './components/Calendario/calendario'
+import styles from './components/NameInput/NameInput.module.css'; 
 
 const Tela2 = () => {
   const text = 'A biblioteca da escola é um espaço dedicado à promoção da educação, pesquisa e desenvolvimento intelectual dos alunos. Equipada com uma ampla variedade de livros, periódicos e recursos digitais, a biblioteca oferece um ambiente propício para o estudo individual e em grupo.';
@@ -47,6 +48,19 @@ const Tela2 = () => {
 
 
   `;
+  const [name, setName] = useState(''); // Estado para armazenar o nome atual
+  const [names, setNames] = useState([]); // Estado para armazenar a lista de nomes
+
+  const handleInputChange = (e) => {
+    setName(e.target.value); // Atualiza o nome atual conforme o usuário digita
+  };
+  const handleAddName = () => {
+    if (name.trim() !== '') { // Adiciona o nome se não for vazio
+      setNames([...names, name]);
+      setName(''); // Limpa o campo de input
+    }
+  };
+
 
   return (
     <div className={styles.scrollView}>
@@ -62,10 +76,23 @@ const Tela2 = () => {
                 <p className={styles.lors}>{text}</p>
               </div>
               <div className={styles.row}>
-                <NameInputContainer>
-                  <StyledInput2 type="name" placeholder='Nomes' />
-                  <NameButton>+</NameButton>
-                </NameInputContainer>
+              <div className={styles.wrapper}>
+      <div className={styles.inputWrapper}>
+        <input
+          type="text"
+          placeholder="Nome"
+          className={styles.input}
+          value={name}
+          onChange={handleInputChange} // Atualiza o estado ao digitar
+        />
+        <button onClick={handleAddName}>Adicionar Nome</button>
+      </div>
+      <ul className={styles.nameList}>
+        {names.map((n, index) => (
+          <li key={index} className={styles.nameItem}>{n}</li>
+        ))}
+      </ul>
+    </div>
                 <StyledInput type="date" />
                 <StyledInput type="time" />
                 <StyledInput type="time" />
